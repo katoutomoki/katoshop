@@ -30,9 +30,9 @@ public class LoginServlet extends HttpServlet {
         // 転送先設定
         String url = "attendanceForm.jsp";
         if (!result) {
-			request.setAttribute("errorMsg", "ユーザID または パスワードに 誤りがあります。");	
-			url = "login.jsp";
-		}
+		request.setAttribute("errorMsg", "ユーザID または パスワードに 誤りがあります。");	
+		url = "login.jsp";
+	}
 
         // 転送
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
