@@ -19,8 +19,8 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // ログアウト処理
         HttpSession session = request.getSession();	
-		Operation op = new Operation();
-		op.logoutProc(session);
+	Operation op = new Operation();
+	op.logoutProc(session);
 
         // 転送先設定
         String url = "login.jsp";
