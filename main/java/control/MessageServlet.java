@@ -26,16 +26,16 @@ public class MessageServlet extends HttpServlet {
         
         //不備の確認
         HttpSession session = request.getSession();	
-		Operation op = new Operation();
-		boolean result = op.messageProc(recipient, message, session);
+	Operation op = new Operation();
+	boolean result = op.messageProc(recipient, message, session);
 
-		//転送先設定
-		String url = "messageSendLog.jsp";
-		
-		//不備がなかった場合、メッセージテーブルに追加
-		if(result) {
-			EmployeeDAO dao = new EmployeeDAO();
-			Employee emp = (Employee)session.getAttribute("employee");
+	//転送先設定
+	String url = "messageSendLog.jsp";
+	
+	//不備がなかった場合、メッセージテーブルに追加
+	if(result) {
+		EmployeeDAO dao = new EmployeeDAO();
+		Employee emp = (Employee)session.getAttribute("employee");
 	        String recipient_id = dao.searchId(recipient);
 	        dao.addMessage(emp, recipient_id, message);
 		} else {
