@@ -38,9 +38,9 @@ public class MessageServlet extends HttpServlet {
 		Employee emp = (Employee)session.getAttribute("employee");
 	        String recipient_id = dao.searchId(recipient);
 	        dao.addMessage(emp, recipient_id, message);
-		} else {
-			url = "messageForm.jsp";
-		}
+	} else {
+		url = "messageForm.jsp";
+	}
         
         // 転送
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
