@@ -24,15 +24,15 @@ public class LoginServlet extends HttpServlet {
 
         // ログイン処理
         HttpSession session = request.getSession();	
-		Operation op = new Operation();
-		boolean result = op.loginProc(name, id, session);
+	Operation op = new Operation();
+	boolean result = op.loginProc(name, id, session);
 
         // 転送先設定
         String url = "attendanceForm.jsp";
         if (!result) {
-			request.setAttribute("errorMsg", "ユーザID または パスワードに 誤りがあります。");	
-			url = "login.jsp";
-		}
+		request.setAttribute("errorMsg", "ユーザID または パスワードに 誤りがあります。");	
+		url = "login.jsp";
+	}
 
         // 転送
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
