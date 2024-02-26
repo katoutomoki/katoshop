@@ -10,17 +10,17 @@ h1 {
 	font-size: 32px;
 	border: 5px solid limegreen;
 	background-color: green;
-    color: white;
-    height: 50px;
-    line-height: 50px;
+	color: white;
+	height: 50px;
+	line-height: 50px;
 }
 
 h2 {
 	font-size: 28px;
 	background-color:limegreen;
-    color: white;
-    height: 40px;
-    line-height: 40px;
+	color: white;
+	height: 40px;
+	line-height: 40px;
 }
 
 hr {
@@ -42,8 +42,8 @@ hr {
 }
 
 .red {
-    color: red;
-    font-weight: bold;
+	color: red;
+	font-weight: bold;
 }
 
 table {
@@ -56,9 +56,9 @@ table {
 
 th {
 	border: 1px solid #5e696c;
-    text-align:center;
-    background-color: #3cb371;
-    height: 32px;
+	text-align:center;
+	background-color: #3cb371;
+	height: 32px;
 }
 
 td {
@@ -81,9 +81,9 @@ td {
 }
 
 .select-list {
-    background-color: #eee8aa;
+	background-color: #eee8aa;
 }
 
 .table-list {
-    background-color: #afeeee;
+	background-color: #afeeee;
 }
