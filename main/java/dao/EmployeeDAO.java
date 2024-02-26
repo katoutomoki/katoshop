@@ -24,8 +24,8 @@ public class EmployeeDAO{
 		String sql = "SELECT * FROM t_emp  ORDER BY department DESC";
 
 		try (Connection con = MyConnection.getConnection();
-				Statement stmt = con.createStatement();
-				ResultSet res = stmt.executeQuery(sql)) {
+			Statement stmt = con.createStatement();
+			ResultSet res = stmt.executeQuery(sql)) {
 
 			while (res.next()) {
 				String name = res.getString("name");
@@ -48,8 +48,8 @@ public class EmployeeDAO{
 		String sql = "SELECT name, id, department, attendance, DATE_FORMAT(update_date, '%m/%d %k:%i') FROM t_emp_attend  ORDER BY update_date DESC";
 		
 		try (Connection con = MyConnection.getConnection();
-				Statement stmt = con.createStatement();
-				ResultSet res = stmt.executeQuery(sql)) {
+			Statement stmt = con.createStatement();
+			ResultSet res = stmt.executeQuery(sql)) {
 
 			while (res.next()) {
 				String name = res.getString("name");
@@ -75,8 +75,8 @@ public class EmployeeDAO{
 		String sql = "SELECT number, sender_name, recipient_name, message, DATE_FORMAT(update_date, '%m/%d %k:%i'), read_number FROM t_message  ORDER BY update_date DESC";
 		
 		try (Connection con = MyConnection.getConnection();
-				Statement stmt = con.createStatement();
-				ResultSet res = stmt.executeQuery(sql)) {
+			Statement stmt = con.createStatement();
+			ResultSet res = stmt.executeQuery(sql)) {
 
 			while (res.next()) {
 				String number = res.getString("number");
@@ -163,7 +163,7 @@ public class EmployeeDAO{
 		String sql = "SELECT name FROM t_emp WHERE id = ? ";
 		
 		try (Connection con = MyConnection.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)) {
+			PreparedStatement pstmt = con.prepareStatement(sql)) {
 			
 			pstmt.setString(1, id);
 			try (ResultSet res = pstmt.executeQuery()) {	
@@ -171,9 +171,9 @@ public class EmployeeDAO{
 					name = res.getString("name");
 				}
 			}
-        } catch (SQLException e) {
-            System.out.println("名前の取得中(DAO④)にエラーが発生しました: " + e.getMessage());
-        }
+        	} catch (SQLException e) {
+            	System.out.println("名前の取得中(DAO④)にエラーが発生しました: " + e.getMessage());
+        	}
 		return name;
 	}
 	
@@ -184,7 +184,7 @@ public class EmployeeDAO{
 		String sql = "SELECT department FROM t_emp WHERE id = ? ";
 		
 		try (Connection con = MyConnection.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)) {
+			PreparedStatement pstmt = con.prepareStatement(sql)) {
 			
 			pstmt.setString(1, id);
 			try (ResultSet res = pstmt.executeQuery()) {	
@@ -192,9 +192,9 @@ public class EmployeeDAO{
 					department = res.getString("department");
 				}
 			}
-        } catch (SQLException e) {
-            System.out.println("部署の取得中(DAO⑤)にエラーが発生しました: " + e.getMessage());
-        }
+        	} catch (SQLException e) {
+           		System.out.println("部署の取得中(DAO⑤)にエラーが発生しました: " + e.getMessage());
+        	}
 		return department;
 	}
 	
@@ -204,7 +204,7 @@ public class EmployeeDAO{
 		String sql = "SELECT id FROM t_emp WHERE name = ? OR id = ?";
 		
 		try (Connection con = MyConnection.getConnection();
-			   PreparedStatement pstmt = con.prepareStatement(sql)) {
+			PreparedStatement pstmt = con.prepareStatement(sql)) {
 			
 			pstmt.setString(1, nameId);
 			pstmt.setString(2, nameId);
@@ -213,9 +213,9 @@ public class EmployeeDAO{
 					recipient_id = res.getString("id");
 				}
 			}
-        } catch (SQLException e) {
-            System.out.println("DAO⑥で、従業員が見つかりませんでした。: " + e.getMessage());
-        }
+        	} catch (SQLException e) {
+            		System.out.println("DAO⑥で、従業員が見つかりませんでした。: " + e.getMessage());
+        	}
 		return recipient_id;
 	}
 	
@@ -224,13 +224,13 @@ public class EmployeeDAO{
 		String sql = "UPDATE t_message SET read_number='1', update_date=update_date WHERE number = ? ";
 		
 		try (Connection con = MyConnection.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)) {
+			PreparedStatement pstmt = con.prepareStatement(sql)) {
 			
 			pstmt.setString(1, number);
 			int num = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println("メッセージ確認の更新中(DAO⑦)にエラーが発生しました: " + e.getMessage());
-        }
+        	} catch (SQLException e) {
+            		System.out.println("メッセージ確認の更新中(DAO⑦)にエラーが発生しました: " + e.getMessage());
+        	}
 	}
 	
 	//⑧メッセージを削除
@@ -238,13 +238,13 @@ public class EmployeeDAO{
 		String sql = "DELETE FROM t_message WHERE number = ? ";
 		
 		try (Connection con = MyConnection.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)) {
+			PreparedStatement pstmt = con.prepareStatement(sql)) {
 			
 			pstmt.setString(1, number);
 			int num = pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println("メッセージ削除中(DAO⑧)にエラーが発生しました: " + e.getMessage());
-        }
+        	} catch (SQLException e) {
+            		System.out.println("メッセージ削除中(DAO⑧)にエラーが発生しました: " + e.getMessage());
+        	}
 	}
 	
 	//⑨未確認メッセージのカウント
@@ -253,7 +253,7 @@ public class EmployeeDAO{
 		String sql = "SELECT number FROM t_message WHERE recipient_name = ? AND read_number =  '0'";
 		
 		try (Connection con = MyConnection.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)) {
+			PreparedStatement pstmt = con.prepareStatement(sql)) {
 					
 			pstmt.setString(1, recipient_name);
 			try (ResultSet res = pstmt.executeQuery()) {	
@@ -261,9 +261,9 @@ public class EmployeeDAO{
 					count++;
 				}
 			}
-		} catch (SQLException e) {
-            System.out.println("未確認メッセージカウント中(DAO⑨)にエラーが発生しました: " + e.getMessage());
-        }
+			} catch (SQLException e) {
+            			System.out.println("未確認メッセージカウント中(DAO⑨)にエラーが発生しました: " + e.getMessage());
+        		}
 		return count;
 	}
 	
