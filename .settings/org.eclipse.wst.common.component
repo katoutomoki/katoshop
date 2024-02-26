@@ -7,6 +7,12 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
                         
         
+<<<<<<< HEAD
+=======
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                        
+        
+>>>>>>> branch 'main' of https://github.com/katoutomoki/katoshop.git
         <property name="context-root" value="EmployeeWork"/>
                         
         
